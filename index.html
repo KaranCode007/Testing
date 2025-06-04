@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PayPal Subscription Button</title>
+</head>
+<body>
+    <h2>Subscribe with PayPal</h2>
+    <div id="paypal-button-container-P-6L487345GP301382VNBADEHY"></div>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AWsVldiAdoXPfYziUJy5yQTq5IMyijKrvDvyGdFptHV99AMQQq_cc_enAIq4n70io51OWXEE7ZyM0a1W&vault=true&intent=subscription"
+        data-sdk-integration-source="button-factory"></script>
+    <script>
+        paypal.Buttons({
+            style: {
+                shape: 'pill',
+                color: 'blue',
+                layout: 'vertical',
+                label: 'subscribe'
+            },
+            createSubscription: function (data, actions) {
+                return actions.subscription.create({
+                    plan_id: 'P-6L487345GP301382VNBADEHY'
+                });
+            },
+            onApprove: function (data, actions) {
+                alert('Subscription successful! ID: ' + data.subscriptionID);
+            },
+            onError: function (err) {
+                console.log('Error:', err);
+            }
+        }).render('#paypal-button-container-P-6L487345GP301382VNBADEHY'); // Renders the PayPal button
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
